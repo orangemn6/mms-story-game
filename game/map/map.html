@@ -1,0 +1,35 @@
+
+
+<h1 id='pending'>
+    Loading..
+</h1>
+
+<script>
+    function getCookie(cookieName){
+        return cookieStore.get(cookieName)
+    }
+    window.getCookie = getCookie;
+    getCookie("mapRecieved").then((obj) => {
+
+        if (obj && obj.value == "true"){
+        document.getElementById('pending').innerText = "This is the map, where do you want to go?"
+        let html = `
+            <div class="map" id="map">
+                <h3>mms school map</h3>
+                <a href="../investigate/newcafe.html"><button>New Cafeteria</button></a>
+                <br>                
+                <a href="../locations/mathclass.html"><button>Math Class</button></a>
+
+            </div>
+        `;
+        document.body.innerHTML += html;
+
+    } else {
+        document.getElementById('pending').innerText = "You try to remember where your ELA class is. You stare at your schedule meaninglessly, trying to read from the poorly printed text, where on the back there are nothing but extremely cringe memes. You die of cringe"
+        let html2 = `
+        <a href="../../index.html"><button>Restart</button></a> or <a href="https://classroom.google.com"><button>Quit</button></a>
+        `
+        document.body.innerHTML += html2;
+    }
+    });
+</script>
