@@ -5,6 +5,36 @@
 </h1>
 
 <script>
+    window.mapE = [
+        {
+            "name": "Mr Oppel's theater/public speaking class",
+            "url": "../investigate/newcafe.html"
+        },
+        {
+            "name": "Math class",
+            "url": "mathclass.html"
+        },
+        {
+            "name": "Orchestra class",
+            "url": "orchestraroom.html"
+        },
+        {
+            "name": "Study hall",
+            "url": "studyhall.html"
+        },
+        {
+            "name": "Lunch class (real)",
+            "url": "lunch.html"
+        },
+        {
+            "name": "Science class",
+            "url": "scienceclass.html"
+        },
+        {
+            "name": "Chorus class",
+            "url": "chorusroom.html"
+        },
+    ]
     function getCookie(cookieName){
         return cookieStore.get(cookieName)
     }
@@ -16,13 +46,23 @@
         let html = `
             <div class="map" id="map">
                 <h3>mms school map</h3>
-                <a href="../investigate/newcafe.html"><button>New Cafeteria</button></a>
-                <br>                
-                <a href="../locations/mathclass.html"><button>Math Class</button></a>
-
+                <div id="mapcontent">
+                </div>
             </div>
         `;
         document.body.innerHTML += html;
+        window.mapE.map((content, index) => {
+            let qe = document.getElementById("mapcontent");
+            let e = document.createElement("a");
+            e.href = content.url;
+            let ez = document.createElement("button");
+            ez.innerText = content.name;
+            e.appendChild(ez);
+            qe.appendChild(e);
+            qe.innerHTML += ("<br><br>");
+            
+        })
+
 
     } else {
         document.getElementById('pending').innerText = "You try to remember where your ELA class is. You stare at your schedule meaninglessly, trying to read from the poorly printed text, where on the back there are nothing but extremely cringe memes. You die of cringe"
